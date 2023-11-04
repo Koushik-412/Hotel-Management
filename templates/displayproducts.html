@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Link to your external CSS file -->
+    <title>Products</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+
+        .main-content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .form-container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+    <style>
+        /* Add specific styles for the product cards */
+         .product-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            width: 300px; /* Set a fixed width for all product cards */
+            height: 400px; /* Set a fixed height for all product cards */
+            text-align: center;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 70%; /* Set a maximum height for the product images */
+            object-fit: contain; /* Ensure the image is contained within the specified dimensions */
+        }
+
+        .demo{
+         background-color: black;
+         color:white;
+         border-radius:50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo"> <a href="{% url 'home' %}">LOGO</a></div>
+                <div class="navbar">
+                    <a href="{% url 'aboutus' %}">About Us</a>
+                    <a href="{% url 'contactus' %}">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h1>Hello {{uname}}!!!</h1>
+        <h1>Products</h1>
+        <div class="product-container">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <button class="demo"><a href="{% url 'payments' %}">Add to cart</a></button>
+            </div>
+            {% empty %}
+            <p>No products available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

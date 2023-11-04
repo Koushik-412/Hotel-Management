@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 25px;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .dashboard-content {
+            padding: 20px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .chart-container {
+            height: 300px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="adminhome">Dashboard</a>
+        <a href="display">Users</a>
+        <a href="addproduct">Products</a>
+<!--        <a href="update">Update User</a>-->
+<!--        <a href="#">Settings</a>-->
+    </div>
+    <div class="content">
+        <div class="dashboard-content">
+            <h1>Dashboard</h1>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h2>Users</h2>
+                    <p>1000</p>
+                </div>
+                <div class="stat-box">
+                    <h2>Products</h2>
+                    <p>500</p>
+                </div>
+                <div class="stat-box">
+                    <h2>Orders</h2>
+                    <p>750</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <script>
+            // Get the context of the canvas element we want to select
+            var ctx = document.getElementById("myChart").getContext('2d');
+
+            // Sample data for demonstration
+            var data = {
+                labels: ["January", "February", "March", "April", "May"],
+                datasets: [{
+                    label: 'Monthly Revenue',
+                    data: [2000, 1500, 2500, 1800, 3000],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            // Chart.js configuration
+            var options = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            };
+
+            // Create the chart
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        </script>
+    </div>
+</body>
+
+</html>

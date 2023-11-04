@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo"> <a href="{% url 'home' %}">LOGO</a></div>
+                <div class="navbar">
+                   <a href="aboutus">About Us</a>
+                    <a href="contactus">Contact Us</a>
+                    <a href="login">Login</a>
+                    <a href="signup">Signup</a>
+<!--                    <a href="{% url 'display' %}">Display</a>-->
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h1>Welcome to Our Website!</h1>
+        <p>Put your main content here.</p>
+    </div>
+</body>
+
+</html>
